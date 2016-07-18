@@ -1,0 +1,169 @@
+canvas {
+	width: 100% !important;
+    max-width: 400px;
+    height: auto !important;
+}
+
+/*Index Page*/
+.inputContainer {
+	height: 275px;
+	width: 600px;
+	background-color: #8C8C8B;
+	margin: auto;
+	border-radius: 5px;
+}
+
+.image {
+	width: 75%;
+	height: 75%;
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+}
+.imgContainer {
+	text-align: center;
+}
+.btn-success {
+	width: 350px;
+	background-color: #80c41c !important;
+	background-image: none !important;
+}
+
+.divButton {
+	text-align: center;
+}
+
+body {
+	background-color: #333333;
+}
+/*Sign Up Page*/
+.signInInput {
+	width:350px;
+	margin: auto;
+	padding-top: 20px;
+
+}
+
+hr{
+	width: 75%;
+}
+
+.signUpInput {
+	width:350px;
+	margin: auto;
+	padding-top: 5px;
+}
+
+.signupInputContainer {
+	height: 320px;
+	width: 600px;
+	padding-top: 20px;
+	background-color: #8C8C8B;
+	margin: auto;
+	border-radius: 5px;
+}
+
+/* Projections Page */
+.charts {
+	display: flex;
+}
+
+#myBarGraph {
+	margin: auto;
+	background-color: black;
+}
+
+#myPieChart {
+	margin: auto;
+	background-color: yellow;
+}
+
+.months {
+	width: 100px;
+	height: 100px;
+	border: 5px solid white;
+	background-color: yellow;
+	font-size: 30px;
+	margin: auto;
+}
+
+.goal {
+	width: 100px;
+	height: 100px;
+	border: 5px solid white;
+	background-color: red;
+	font-size: 30px;
+	margin: auto;
+}
+
+
+
+
+
+/* this is ross' entry from friday, july 15 */
+h1, th{
+	color: white;
+}
+
+#total{
+	color: white;
+}
+
+#goal{
+	background-color: green;
+	padding: 1%;
+	border-radius: 2px;
+	color: white;
+}
+
+#goal input{
+	width: 60%;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#income{
+	margin-top: 1%;
+	background-color: green;
+	width: 50%;
+	padding: 1%;
+	float: left;
+	text-align: center
+}
+
+#expense{
+	margin-top: 1%;
+	background-color: green;
+	width: 50%;
+	float: right;
+	padding: 1%;
+	text-align: center
+}
+
+
+
+/* this is the end of Ross entry */
+
+@media (max-width: 1000px) {
+	.charts{
+		display: block;
+	}
+}
+
+@media (max-width: 660px) {
+	.image {
+		width: 90%;
+		height: 90%;
+	}
+	.inputContainer {
+		width: 90%;
+	}
+
+	.btn-success {
+		width: 50%;
+	}
+
+	.signInInput {
+		width: 50%;
+	}
+}

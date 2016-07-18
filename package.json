@@ -1,0 +1,46 @@
+{
+  "name": "app_without_server",
+  "version": "1.0.0",
+  "description": "basic todo app with dev server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "tgfbikes"
+  },
+  "author": "Stephen King",
+  "license": "ISC",
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "bcryptjs": "^2.3.0",
+    "bootstrap": "^3.3.6",
+    "browserify": "^13.0.1",
+    "chart.js": "^2.1.6",
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "flux": "^2.1.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^4.0.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-open": "^2.0.0",
+    "jquery": "^2.2.4",
+    "jquery-ui": "^1.12.0",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.5.4",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "reactify": "^1.1.1",
+    "skipper": "^0.6.1",
+    "toaster": "^0.1.2",
+    "toastr": "^2.1.2",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
