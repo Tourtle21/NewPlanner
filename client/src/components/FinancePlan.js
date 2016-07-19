@@ -10,6 +10,8 @@ var TextInput = require("./common/TextInput")
 var API = require("../helpers/api")
 var UserStore = require("../stores/userStore");
 var times = 0;
+var Header = require("./common/header");
+
 var FinancePlan = React.createClass({
 
 	getInitialState: function () {
@@ -108,6 +110,7 @@ var FinancePlan = React.createClass({
 		var difference = this.state.totals.diff
 		return (
 			<div>
+				<Header />
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 				<div id="goal">
 					How much would you like to save in <DropBox />
@@ -118,6 +121,7 @@ var FinancePlan = React.createClass({
 						onChange={this.state.saveTodoState}
 					/>
 				</div>
+			<div className="financeBackground">
 				<div id="income">
 					<FinanceManager
 						name= "incomes"
@@ -140,6 +144,7 @@ var FinancePlan = React.createClass({
 						delete = {this.delete}
 					/>
 				</div>
+			</div>
 				<div className="clearall"></div>
 				<div id="total"> {this.state.totals.netIncome} </div>
 				<button onClick={this.link}>Calculate</button>

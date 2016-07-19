@@ -63,6 +63,89 @@ hr{
 	border-radius: 5px;
 }
 
+
+
+/* this is ross' entry from friday, july 15 */
+h1, th{
+	color: white;
+}
+
+#total{
+	clear:all;
+	color: white;
+}
+
+#goal{
+	background-color: green;
+	padding: 1%;
+	border-radius: 2px;
+	color: white;
+}
+
+#goal input{
+	width: 60%;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.financeBackground{
+	background-color: green;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#income{
+	margin-top: 1%;
+	width: 50%;
+	padding: 1%;
+	float: left;
+	text-align: center
+}
+
+#expense{
+	margin-top: 1%;
+	width: 50%;
+	float: right;
+	padding: 1%;
+	text-align: center
+}
+
+
+.clearall{
+
+	clear: left;
+}
+
+#headerImage{
+	width:25%;
+}
+
+.header{
+	padding: 20px 10px 5px 10px;
+}
+
+.header hr{
+	width:100%;
+}
+
+.nav {
+	float: right;
+	margin-left: 2%;
+}
+
+.nav li{
+	float: left;
+	margin-left: 5px;
+}
+.nav a{
+	color: white;
+
+}
+
+
+/* this is the end of Ross entry */
+
 /* Projections Page */
 .charts {
 	display: flex;
@@ -96,54 +179,6 @@ hr{
 	font-size: 30px;
 	margin: auto;
 }
-
-
-
-
-
-/* this is ross' entry from friday, july 15 */
-h1, th{
-	color: white;
-}
-
-#total{
-	color: white;
-}
-
-#goal{
-	background-color: green;
-	padding: 1%;
-	border-radius: 2px;
-	color: white;
-}
-
-#goal input{
-	width: 60%;
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-#income{
-	margin-top: 1%;
-	background-color: green;
-	width: 50%;
-	padding: 1%;
-	float: left;
-	text-align: center
-}
-
-#expense{
-	margin-top: 1%;
-	background-color: green;
-	width: 50%;
-	float: right;
-	padding: 1%;
-	text-align: center
-}
-
-
-
-/* this is the end of Ross entry */
 
 @media (max-width: 1000px) {
 	.charts{
