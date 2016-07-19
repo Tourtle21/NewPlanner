@@ -4,6 +4,12 @@ var ItemStore = require('../stores/itemStore')
 
 
 var Projections = React.createClass({
+	getInitialState: function () {
+		return {
+			type: ItemStore.getAllExpenses(),
+			word: "expense"
+		}
+	},
 	componentDidMount: function () {
 	var ctx = document.getElementById("myBarGraph")
 	var myChart = new Chart(ctx, {
@@ -17,7 +23,7 @@ var Projections = React.createClass({
 	            backgroundColor: [
 	            	'rgba(54, 162, 235, 0.2)',
 	                this.changeColor(0.2),
-	                
+
 	            ],
 	            borderColor: [
 	            	'rgba(54, 162, 235, 1)',
@@ -31,26 +37,27 @@ var Projections = React.createClass({
 	    	scales: {
 	    		yAxes: [{
 	    			ticks: {
-	    				beginAtZero: true 
+	    				beginAtZero: true
 	    			}
 	    		}]
 	    	}
 	    }
-	   
 	});
+	this.expenseData(this.state.type)
+},
+setGraph: function (data) {
 	var ctx = document.getElementById("myPieChart")
-	var PieData = this.expenseData()
 	var myChart = new Chart(ctx, {
 		circumference: Math.PI,
 	    type: 'doughnut',
 	    data: {
-			    labels: PieData.labels,
+			    labels: data.labels,
 			    datasets: [
 			        {
-			            data: PieData.data,
-			            backgroundColor: PieData.backgroundColor,
+			            data: data.data,
+			            backgroundColor: data.backgroundColor,
 			            hoverBackgroundColor: [
-			              
+
 			            ]
 			        }]
 			}
@@ -58,7 +65,7 @@ var Projections = React.createClass({
 },
 
 expenseData: function () {
-	var expenses = ItemStore.getAllExpenses()
+	var expenses = this.state.type
 	var colors = ["#7fffd4", "#f0ffff", "#f5f5dc","#ffe4c4","#000","#ffebcd","#00f","#8a2be2","#a52a2a","#deb887","#ea7e5d","#5f9ea0","#7fff00","#d2691e","#ff7f50","#6495ed","#fff8dc","#dc143c","#0ff","#00008b","#008b8b","#b8860b","#a9a9a9","#006400","#a9a9a9","#bdb76b","#8b008b","#556b2f",
 "#eee8aa","#98fb98","#afeeee","#db7093","#ffefd5","#ffdab9","#cd853f","#ffc0cb","#dda0dd","#b0e0e6"]
 	var backgroundColor = []
@@ -69,15 +76,27 @@ expenseData: function () {
 		data.push(expenses[i].amount)
 		backgroundColor.push(colors[i])
 	}
-	return {
+	if (this.state.word == "expense") {
+		this.setState({
+			type: ItemStore.getAllIncomes(),
+			word: "incomes"
+		})
+	} else {
+		this.setState({
+			type: ItemStore.getAllExpenses(),
+			word: "expense"
+		})
+	}
+
+	this.setGraph({
 		data:data,
 		labels:labels,
 		backgroundColor:backgroundColor
-	}
+	})
 },
 
 changeColor: function (opacity) {
-		if (ItemStore.getNet() * ItemStore.getMonths() >= ItemStore.getGoal()) { 
+		if (ItemStore.getNet() * ItemStore.getMonths() >= ItemStore.getGoal()) {
 			return 'rgba(0, 204, 0, '+ opacity +')'
 		} else {
 			return 'rgba(255, 99, 132,'+ opacity +')'
@@ -91,10 +110,11 @@ changeColor: function (opacity) {
 					<canvas id="myPieChart" width="100" height='100'></canvas>
 					<canvas id="myBarGraph" width="100" height='100'></canvas>
 				</div>
+				<button onClick={this.expenseData}></button>
 			</div>
-			
-					
-			
+
+
+
 		)
 	}
 })
