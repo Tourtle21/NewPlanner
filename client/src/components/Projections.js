@@ -7,7 +7,8 @@ var Projections = React.createClass({
 	getInitialState: function () {
 		return {
 			type: ItemStore.getAllExpenses(),
-			word: "expense"
+			word: "expense",
+			opposite: "Incomes"
 		}
 	},
 	componentDidMount: function () {
@@ -52,8 +53,7 @@ setGraph: function (data) {
 	    type: 'doughnut',
 	    data: {
 			    labels: data.labels,
-			    datasets: [
-			        {
+			    datasets: [{
 			            data: data.data,
 			            backgroundColor: data.backgroundColor,
 			            hoverBackgroundColor: [
@@ -79,12 +79,14 @@ expenseData: function () {
 	if (this.state.word == "expense") {
 		this.setState({
 			type: ItemStore.getAllIncomes(),
-			word: "incomes"
+			word: "incomes",
+			opposite: "Expenses"
 		})
 	} else {
 		this.setState({
 			type: ItemStore.getAllExpenses(),
-			word: "expense"
+			word: "expense",
+			opposite: "Incomes"
 		})
 	}
 
@@ -107,10 +109,11 @@ changeColor: function (opacity) {
 			<div>
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 				 <div className="charts">
+				 	<div>{this.state.opposite}</div>
 					<canvas id="myPieChart" width="100" height='100'></canvas>
 					<canvas id="myBarGraph" width="100" height='100'></canvas>
 				</div>
-				<button onClick={this.expenseData}></button>
+				<button onClick={this.expenseData}>{this.state.word}</button>
 			</div>
 
 

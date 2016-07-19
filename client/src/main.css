@@ -66,6 +66,7 @@ hr{
 /* Projections Page */
 .charts {
 	display: flex;
+	color: white;
 }
 
 #myBarGraph {
