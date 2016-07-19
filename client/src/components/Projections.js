@@ -3,16 +3,19 @@ var Chart = require('chart.js')
 var ItemStore = require('../stores/itemStore')
 
 
+
 var Projections = React.createClass({
 	getInitialState: function () {
 		return {
 			type: ItemStore.getAllExpenses(),
 			word: "expense",
-			opposite: "Incomes"
+			opposite: "Income",
+			chart: ""
 		}
 	},
 	componentDidMount: function () {
-	var ctx = document.getElementById("myBarGraph")
+	var ctx = document.getElementById("myBarGraph");
+	Chart.defaults.global.defaultFontColor = "#333333";
 	var myChart = new Chart(ctx, {
 		circumference: Math.PI,
 	    type: 'bar',
@@ -42,6 +45,11 @@ var Projections = React.createClass({
 	    			}
 	    		}]
 	    	}
+	    },
+	    defaults: {
+	    	global: {
+	    		fontColor: "black"
+	    	}
 	    }
 	});
 	this.expenseData(this.state.type)
@@ -62,12 +70,19 @@ setGraph: function (data) {
 			        }]
 			}
 	});
+	this.setState({
+		chart: myChart
+	})
 },
 
 expenseData: function () {
+	if (this.state.chart) {
+		window.Mychart = this.state.chart;
+		Mychart.destroy()
+	}
+
 	var expenses = this.state.type
-	var colors = ["#7fffd4", "#f0ffff", "#f5f5dc","#ffe4c4","#000","#ffebcd","#00f","#8a2be2","#a52a2a","#deb887","#ea7e5d","#5f9ea0","#7fff00","#d2691e","#ff7f50","#6495ed","#fff8dc","#dc143c","#0ff","#00008b","#008b8b","#b8860b","#a9a9a9","#006400","#a9a9a9","#bdb76b","#8b008b","#556b2f",
-"#eee8aa","#98fb98","#afeeee","#db7093","#ffefd5","#ffdab9","#cd853f","#ffc0cb","#dda0dd","#b0e0e6"]
+	var colors = ["#41A725", "#A0CC6B", "#D1570D","#5A1F00","#FDE792","#FD4A92","#109C92","#FDAE31","#FD0000","#41A7CC","#FF91A5","#B047FF","#70D1C4"]
 	var backgroundColor = []
 	var data = []
 	var labels = []
@@ -86,7 +101,7 @@ expenseData: function () {
 		this.setState({
 			type: ItemStore.getAllExpenses(),
 			word: "expense",
-			opposite: "Incomes"
+			opposite: "Income"
 		})
 	}
 
@@ -107,13 +122,15 @@ changeColor: function (opacity) {
 	render: function () {
 		return (
 			<div>
-				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
-				 <div className="charts">
-				 	<div>{this.state.opposite}</div>
-					<canvas id="myPieChart" width="100" height='100'></canvas>
-					<canvas id="myBarGraph" width="100" height='100'></canvas>
-				</div>
-				<button onClick={this.expenseData}>{this.state.word}</button>
+					<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
+						<div className="titlebar">
+							<div className="expenseDiv">{this.state.opposite}</div>
+						</div>
+								 <div className="charts">
+									<canvas id="myPieChart" width="100" height='100'></canvas>
+									<canvas id="myBarGraph" width="100" height='100'></canvas>
+							</div>
+						<button className="expenseButton" onClick={this.expenseData}>{this.state.word}</button>
 			</div>
 
 
