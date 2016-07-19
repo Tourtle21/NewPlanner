@@ -17,6 +17,12 @@ var UserActionCreator = {
 					ifnew: ifnew
 				})
 			})
+			.fail(function (err) {
+				Dispatcher.dispatch({
+					actionType: "userFail",
+					err: err,
+				})
+			})
 	},
 	setifnew: function (ifnew) {
 		Dispatcher.dispatch({
@@ -36,6 +42,11 @@ var UserActionCreator = {
 					}
 				})
 			})
+	},
+	removeError: function () {
+		Dispatcher.dispatch({
+			actionType: "removeError",
+		})
 	}
 }
 

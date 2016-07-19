@@ -13,9 +13,10 @@ var TextInput = React.createClass({
 
 		return (
 			<div className={wrapperClass}>
-				
+
 				<div className={this.props.className}>
 					<input
+						type = {this.props.type}
 						name={this.props.name}
 						className="form-control"
 						placeholder={this.props.placeholder}
@@ -23,7 +24,7 @@ var TextInput = React.createClass({
 						value={this.props.value}
 						onChange={this.props.onChange}
 					/>
-					<div>{this.props.error}</div>
+					<div className="text-danger">{this.props.error}</div>
 				</div>
 			</div>
 		);
