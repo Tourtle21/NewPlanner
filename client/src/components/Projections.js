@@ -1,6 +1,8 @@
 var React = require('react');
 var Chart = require('chart.js')
-var ItemStore = require('../stores/itemStore')
+var ItemStore = require('../stores/itemStore');
+var browserHistory = require("react-router").browserHistory;
+var Header = require('./common/header');
 
 
 
@@ -127,6 +129,7 @@ changeColor: function (opacity) {
 	render: function () {
 		return (
 			<div>
+			<Header />
 					<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 						<div className="titlebar">
 							<div className="expenseDiv">{this.state.opposite}</div>

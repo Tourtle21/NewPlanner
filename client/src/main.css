@@ -1,3 +1,6 @@
+.container{
+	padding-bottom: 10%;
+}
 canvas {
 	width: 100% !important;
     max-width: 400px;
@@ -187,6 +190,29 @@ select{
 	color:white;
 	font-size: 28px;
 }
+
+.financetotal{
+	color:white;
+}
+.inputbutton{
+    background-color: green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline
+    font-size: 16px;
+    border: 2px solid white;
+}
+
+.financeBackground input{
+	text-decoration: none;
+	margin-top: 1%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 1%;
+}
+
 
 
 /* this is the end of Ross entry */
