@@ -36,7 +36,6 @@ var Projections = React.createClass({
 	            borderWidth: 1
 	        }]
 	    },
-
 	    options: {
 	    	scales: {
 	    		yAxes: [{
@@ -68,7 +67,13 @@ setGraph: function (data) {
 
 			            ]
 			        }]
+			},
+			options: {
+				animation: {
+					animateScale: true
+				},
 			}
+
 	});
 	this.setState({
 		chart: myChart
