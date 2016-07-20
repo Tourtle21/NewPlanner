@@ -113,7 +113,11 @@ var FinancePlan = React.createClass({
 				<Header />
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 				<div id="goal">
-					How much would you like to save in <DropBox />
+					<div id="goal-content">
+					How much would you like to save in: 
+					</div>
+
+					<DropBox />
 					<TextInput
 						name="goal"
 						placeholder='goal amount'
@@ -146,8 +150,11 @@ var FinancePlan = React.createClass({
 				</div>
 			</div>
 				<div className="clearall"></div>
+				<div id="x007"> Monthly Cash Flo is:</div>
 				<div id="total"> {this.state.totals.netIncome} </div>
-				<button onClick={this.link}>Calculate</button>
+				<div id="centerbutton">
+				<button id="calculate" onClick={this.link}>Calculate</button>
+				</div>
 			</div>
 		)
 	}

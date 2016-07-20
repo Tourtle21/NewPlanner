@@ -1,7 +1,8 @@
 var React = require('react');
 var TextInput = require('./common/TextInput')
 var Link = require('react-router').Link;
-var browserHistory = require("react-router").browserHistory
+var browserHistory = require("react-router").browserHistory;
+var Header = require('./common/header');
 
 var Index = React.createClass({
 	getInitialState: function () {
@@ -33,7 +34,7 @@ var Index = React.createClass({
 	render: function () {
 		return (
 			<div>
-
+				<Header />
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 					<div className="inputContainer">
 						<TextInput 
