@@ -10,7 +10,7 @@ var Projections = React.createClass({
 	getInitialState: function () {
 		return {
 			type: ItemStore.getAllExpenses(),
-			word: "expense",
+			word: "Expense",
 			opposite: "Income",
 			chart: ""
 		}
@@ -98,16 +98,16 @@ expenseData: function () {
 		data.push(expenses[i].amount)
 		backgroundColor.push(colors[i])
 	}
-	if (this.state.word == "expense") {
+	if (this.state.word == "Expense") {
 		this.setState({
 			type: ItemStore.getAllIncomes(),
-			word: "incomes",
+			word: "Incomes",
 			opposite: "Expenses"
 		})
 	} else {
 		this.setState({
 			type: ItemStore.getAllExpenses(),
-			word: "expense",
+			word: "Expense",
 			opposite: "Income"
 		})
 	}

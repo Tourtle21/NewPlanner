@@ -181,8 +181,10 @@ select{
 	text-align: center;
 }
 
-.goalDropbox{
-	text-align: center;
+#DropBox{
+	padding-left: 1%;
+	display: inline;
+	vertical-align: top;
 }
 
 #x007{
@@ -200,7 +202,7 @@ select{
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline
+    display: inline;
     font-size: 16px;
     border: 2px solid white;
 }

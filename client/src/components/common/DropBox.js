@@ -7,7 +7,7 @@ var DropBox = React.createClass({
 
 	render: function () {
 		return (
-			<div>
+			<div id="DropBox">
 				<select>
   					<option value="1">1 Month</option>
 					<option value="3">3 Months</option>
