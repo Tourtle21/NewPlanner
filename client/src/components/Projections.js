@@ -47,8 +47,8 @@ var Projections = React.createClass({
 	            label: 'Projected',
 	            data: [ItemStore.getGoal(), ItemStore.getNet() * ItemStore.getMonths()],
 	            backgroundColor: [
-	            	'rgba(54, 162, 235, 0.2)',
-	                this.changeColor(0.2),
+	            	'rgba(54, 162, 235, 0.8)',
+	                this.changeColor(0.8),
 
 	            ],
 	            borderColor: [
@@ -109,7 +109,7 @@ expenseData: function () {
 	}
 
 	var expenses = this.state.type
-	var colors = ["#41A725", "#A0CC6B", "#D1570D","#5A1F00","#FDE792","#FD4A92","#109C92","#FDAE31","#FD0000","#41A7CC","#FF91A5","#B047FF","#70D1C4"]
+	var colors = ["#109C92", "#FD4A92", "#A0CC6B", "#D1570D","#5A1F00","#41A725","#FD4A92","#109C92","#FDAE31","#FD0000","#41A7CC","#FF91A5","#B047FF","#70D1C4"]
 	var backgroundColor = []
 	var data = []
 	var labels = []
