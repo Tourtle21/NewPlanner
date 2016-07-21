@@ -111,7 +111,7 @@ var FinancePlan = React.createClass({
 		return (
 			<div>
 				<Header />
-				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
+				<div className="imgContainer"><img className="image" src="../images/instructions.png" alt="logo" /></div>
 				<div id="goal">
 					<div id="goal-content">
 					How much would you like to save in: 
