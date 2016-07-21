@@ -4,7 +4,6 @@ var Link = require('react-router').Link;
 var browserHistory = require("react-router").browserHistory
 var UserActionCreator = require("../actions/UserActionCreator")
 var UserStore = require("../stores/userStore")
-var Header = require('./common/header');
 
 var SignUp = React.createClass({
 	getInitialState: function () {
@@ -94,7 +93,6 @@ var SignUp = React.createClass({
 	render: function () {
 		return (
 			<div>
-			<Header />
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 				<div className="signupInputContainer">
 					<TextInput
