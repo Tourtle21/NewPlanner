@@ -12,22 +12,22 @@ var _items = [
 			[{
 				id: 0,
 				type: "Job",
-				amount: 800
+				amount: 1600
 			},
 			{
 				id: 1,
-				type: "Alowence",
-				amount: 1500
+				type: "Investment",
+				amount: 400
 			},
 			{
 				id: 2,
-				type: "Investment",
-				amount: 50
+				type: "Odd-Jobs",
+				amount: 300
 			}],
 			[{
 				id: 0,
 				type: "House Payment",
-				amount: 550
+				amount: 700
 			},
 			{
 				id: 1,
@@ -37,7 +37,7 @@ var _items = [
 			{
 				id: 2,
 				type: "Groceries",
-				amount: 75
+				amount: 200
 			}]
 ]
 var item;
