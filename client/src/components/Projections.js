@@ -12,7 +12,27 @@ var Projections = React.createClass({
 			type: ItemStore.getAllExpenses(),
 			word: "Expense",
 			opposite: "Income",
-			chart: ""
+			chart: "",
+			alert: ""
+		}
+	},
+	componentWillMount: function () {
+		var months = "months"
+		console.log("Hi" + String(ItemStore.getGoal() - ItemStore.getNet()) + " ")
+		if (ItemStore.getMonths() == "1") {
+			months = "month"
+		}
+		if (this.changeColor("") == "rgba(0, 204, 0, )") {
+			this.setState({
+				alert: "According to your life style you should hit your goal in " + ItemStore.getMonths() + " " +months + "."
+			})
+		} else {
+			if (Math.ceil(ItemStore.getGoal() / ItemStore.getNet()) - ItemStore.getMonths() < 2) {
+				months = "month"
+			}
+			this.setState({
+				alert: "Sorry according to your life style you either need to cut back $" + String((ItemStore.getGoal() - (ItemStore.getNet()* ItemStore.getMonths()))/ItemStore.getMonths()) + " a month or add at most "+ String(Math.ceil(ItemStore.getGoal() / ItemStore.getNet()) - ItemStore.getMonths()) + " " + months +"."
+			})
 		}
 	},
 	componentDidMount: function () {
@@ -129,16 +149,16 @@ changeColor: function (opacity) {
 	render: function () {
 		return (
 			<div>
-			<Header />
-					<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
-						<div className="titlebar">
-							<div className="expenseDiv">{this.state.opposite}</div>
-						</div>
-								 <div className="charts">
-									<canvas id="myPieChart" width="100" height='100'></canvas>
-									<canvas id="myBarGraph" width="100" height='100'></canvas>
-							</div>
-						<button className="expenseButton" onClick={this.expenseData}>{this.state.word}</button>
+				<Header />
+				<div id="goalAlert">{this.state.alert}</div>
+				<div className="titlebar">
+					<div className="expenseDiv">{this.state.opposite}</div>
+				</div>
+				<div className="charts">
+					<canvas id="myPieChart" width="100" height='100'></canvas>
+					<canvas id="myBarGraph" width="100" height='100'></canvas>
+				</div>
+				<button className="expenseButton" onClick={this.expenseData}>{this.state.word}</button>
 			</div>
 
 

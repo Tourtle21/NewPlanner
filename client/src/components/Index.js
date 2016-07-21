@@ -28,14 +28,18 @@ var Index = React.createClass({
 		browserHistory.push("/signup")
 	},
 	showEnd: function () {
-		browserHistory.push("/FinancePlan");
+		if (this.state.text.email == "" || this.state.text.email == "") {
+			return
+		} else {
+			browserHistory.push("/FinancePlan");
+		}
 	},
 	render: function () {
 		return (
 			<div>
 				<div className="imgContainer"><img className="image" src="../images/moneylogo.png" alt="logo" /></div>
 					<div className="inputContainer">
-						<TextInput 
+						<TextInput
 							className="signInInput"
 							name="email"
 							placeholder="EMAIL"
@@ -43,7 +47,7 @@ var Index = React.createClass({
 							onChange={this.saveTodoState}
 							error={this.state.errors.email}
 						/>
-						<TextInput 
+						<TextInput
 							className="signInInput"
 							name="password"
 							placeholder="Password"
@@ -56,7 +60,7 @@ var Index = React.createClass({
 						<hr />
 						<div className="divButton"><button className="btn btn-success" onClick={this.link} >Sign Up</button></div>
 					</div>
-						
+
 			</div>
 		)
 	}

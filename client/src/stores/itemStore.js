@@ -5,7 +5,7 @@ var EventEmitter = require('events');
 var _ = require('lodash');
 var goal = {
 	goal: 0,
-	months: 0,
+	months: 2,
 	net: 0
 }
 var _items = [
