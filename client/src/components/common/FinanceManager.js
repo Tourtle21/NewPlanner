@@ -53,8 +53,8 @@ var FinancePlan = React.createClass({
 					</tbody>
 				</table>
 			<button className="inputbutton" onClick={this.props.createNew.bind(null, this.props.title)}>+</button>
-			<div>
-				{this.props.total}
+			<div className="financetotal">
+				Total: {this.props.total}
 			</div>
 
 

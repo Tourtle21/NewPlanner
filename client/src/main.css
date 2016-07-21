@@ -142,6 +142,7 @@ h1, th{
 
 .header{
 	padding: 20px 10px 5px 10px;
+	font-size: 18px
 }
 
 .header hr{
@@ -177,7 +178,7 @@ select{
 
 #calculate{
 	width:250px;
-	background-color: #40a629;
+	background-color: green;
 	margin: auto;
 	border-radius: 5px;
 	text-align: center;
@@ -234,8 +235,11 @@ body {
     background-size: 100%;
 }
 
-
-
+.financetotal{
+	margin-top: 10px;
+	font-size: 30px;
+	color: white;
+}
 
 /* this is the end of Ross entry */
 
