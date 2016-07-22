@@ -12,7 +12,6 @@ var FinancePlan = React.createClass({
 
 		var createTodoRow = function (number, incomes) {
 			amount += incomes.amount
-			console.log(incomes)
 			return (
 				<tr key={incomes.id * (number + 1)}>
 					<td>
@@ -22,8 +21,8 @@ var FinancePlan = React.createClass({
 						value={incomes.type}
 						name={this.props.name}
 						onChange={this.props.saveTodoState.bind(null, incomes.id, "type")}
-						/>
-						</td>
+					/>
+					</td>
 					<td>
 						<TextInput
 							value={incomes.amount}
@@ -34,7 +33,7 @@ var FinancePlan = React.createClass({
 				</tr>
 			);
 		}
-		if (this.props.title == "Income"){
+		if (this.props.title == "Monthly Income"){
 			var output = this.props.incomes.map(createTodoRow.bind(this, 0), this)
 		} else {
 			var output = this.props.expenses.map(createTodoRow.bind(this, 1), this)
@@ -56,7 +55,7 @@ var FinancePlan = React.createClass({
 				<button className="inputbutton" onClick={this.props.createNew.bind(null, this.props.title)}>+</button>
 				<div className="financetotal">
 					Total: {this.props.total.toFixed(2)}
-			</div>
+				</div>
 
 
 

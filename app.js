@@ -8,7 +8,7 @@ var path = require('path');
 
 //configure Mongoose
 
- mongoose.connect('mongodb://mongodb.cs.dixie.edu/CashFlo')
+ mongoose.connect('mongodb://localhost/CashFlo')
 
  mongoose.connection.on('connected', function () {
  	console.log('Data Base Connected...'.green)

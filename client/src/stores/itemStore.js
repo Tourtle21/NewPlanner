@@ -89,6 +89,7 @@ Dispatcher.register(function (action, type) {
 				amount: 0
 			})
 		}
+		item.data = JSON.stringify(_items)
 		break;
 
 
@@ -117,6 +118,7 @@ Dispatcher.register(function (action, type) {
 		for (var i = action.id; i < _items[action.number].length; i++) {
 			_items[action.number][i].id -= 1
 		}
+		item.data = JSON.stringify(_items)
 		break;
 		case "initial":
 		_items = JSON.parse(action.item.data)

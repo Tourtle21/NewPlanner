@@ -58,6 +58,10 @@ var FinancePlan = React.createClass({
 
 	},
 	update: function () {
+		this.setState({
+			incomes: ItemStore.getAllIncomes(),
+			expenses: ItemStore.getAllExpenses(),
+		})
 		var sum = 0;
 		var expense = 0;
 		for (var i = 0; i <= this.state.incomes.length -1; i++) {
@@ -67,8 +71,6 @@ var FinancePlan = React.createClass({
 			expense += Number(this.state.expenses[i].amount)
 		}
 		this.setState({
-				incomes: ItemStore.getAllIncomes(),
-				expenses: ItemStore.getAllExpenses(),
 				totals: {
 					total:	sum,
 					diff: expense,
@@ -82,22 +84,18 @@ var FinancePlan = React.createClass({
 	},
 	componentWillMount: function () {
 		ItemStore.addChangeListener(this.onChange);
-		this.setState({
-			incomes: ItemStore.getAllIncomes(),
-			expenses: ItemStore.getAllExpenses()
-		})
-	},
-	componentDidMount: function () {
-		var item = [this.state.incomes, this.state.expenses]
+		var item = [ItemStore.getAllIncomes(), ItemStore.getAllExpenses()]
 		if (UserStore.getifnew()) {
-			console.log("created")
 			ItemActionCreator.createItem(item);
 		}
+	},
+	componentDidMount: function () {
 		ItemActionCreator.initialize(UserStore.getId());
 	},
+
 	createNew: function (turn) {
 		var number = 0;
-		if (turn == "expenses") {
+		if (turn == "Monthly Expenses") {
 			number = 1;
 		}
 		ItemActionCreator.createItem(number)
@@ -134,7 +132,7 @@ var FinancePlan = React.createClass({
 					<div id="income">
 						<FinanceManager
 							name= "incomes"
-							title= "Income"
+							title= "Monthly Income"
 							incomes= {this.state.incomes}
 							total= {total}
 							saveTodoState = {this.saveTodoState}
@@ -145,7 +143,7 @@ var FinancePlan = React.createClass({
 					<div id="expense">
 						<FinanceManager
 							name= "expenses"
-							title= "expenses"
+							title= "Monthly Expenses"
 							expenses= {this.state.expenses}
 							total= {difference}
 							saveTodoState = {this.saveTodoState}
