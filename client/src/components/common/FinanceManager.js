@@ -12,6 +12,7 @@ var FinancePlan = React.createClass({
 
 		var createTodoRow = function (number, incomes) {
 			amount += incomes.amount
+			console.log(incomes)
 			return (
 				<tr key={incomes.id * (number + 1)}>
 					<td>
@@ -52,9 +53,9 @@ var FinancePlan = React.createClass({
 						{output}
 					</tbody>
 				</table>
-			<button className="inputbutton" onClick={this.props.createNew.bind(null, this.props.title)}>+</button>
-			<div className="financetotal">
-				Total: {this.props.total}
+				<button className="inputbutton" onClick={this.props.createNew.bind(null, this.props.title)}>+</button>
+				<div className="financetotal">
+					Total: {this.props.total.toFixed(2)}
 			</div>
 
 

@@ -19,7 +19,6 @@ var ItemActionCreator = {
 		}
 	},
 	updateItem: function (item, type) {
-		console.log(type)
 		if (!type) {
 			API.updateMoney(item);
 		} else {
@@ -54,6 +53,9 @@ var ItemActionCreator = {
 					item: item
 				})
 			})
+	},
+	deleteItems: function (item) {
+		API.deleteMoney()
 	}
 }
 

@@ -8,6 +8,7 @@ var goal = {
 	months: 2,
 	net: 0
 }
+var CHANGE_EVENT = 'change';
 var _items = [
 			[{
 				id: 0,
@@ -42,17 +43,18 @@ var _items = [
 ]
 var item;
 var ItemStore = Object.assign({}, EventEmitter.prototype, {
-	// addChangeListener: function (callback) {
-	// 	this.on(CHANGE_EVENT, callback);
-	// },
+	addChangeListener: function (callback) {
+		console.log("changed")
+		this.on(CHANGE_EVENT, callback);
+	},
 
-	// removeChangeListener: function (callback) {
-	// 	this.removeListener(CHANGE_EVENT, callback);
-	// },
+	removeChangeListener: function (callback) {
+		this.removeListener(CHANGE_EVENT, callback);
+	},
 
-	// emitChange: function () {
-	// 	this.emit(CHANGE_EVENT);
-	// },
+	emitChange: function () {
+		this.emit(CHANGE_EVENT);
+	},
 	getData: function () {
 		return _items;
 	},
@@ -102,6 +104,7 @@ Dispatcher.register(function (action, type) {
 		var existingItem = _.find(_items[index], {id: action.item.id})
 		var existingItemIndex = _.indexOf(_items[index], existingItem);
 		_items[index].splice(existingItemIndex, 1, action.item)
+		item.data = JSON.stringify(_items)
 		// ItemStore.emitChange();
 		break;
 		case "goal":
@@ -118,7 +121,7 @@ Dispatcher.register(function (action, type) {
 		case "initial":
 		_items = JSON.parse(action.item.data)
 		item = action.item
-
+		ItemStore.emitChange()
 	}
 })
 

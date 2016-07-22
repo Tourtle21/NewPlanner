@@ -49,6 +49,10 @@ Dispatcher.register(function (action, type) {
 		break;
 		case "removeError":
 		errors = "";
+		break;
+		case "wrong":
+		errors = "wrong"
+		UserStore.emitChange()
 	}
 })
 

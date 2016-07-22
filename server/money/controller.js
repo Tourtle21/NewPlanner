@@ -28,15 +28,14 @@ function createMoney(req, res)
 
 function deleteMoney(req, res)
 {
-	findMoney(req, res, function (item)
-	{
-		item.remove(function (err)
-		{
-			if(err) return reportError(err, res)
-			res.status(204).end()
-		})
-
-	});
+	console.log("delete")
+	Money.find(function (err, collection) {
+		for (var i = 0; i < collection.length; i++) {
+			collection[i].remove(function (req, res) {
+				console.log("deleted")
+			})
+		}
+	})
 }
 
 function indexMoney(req, res)

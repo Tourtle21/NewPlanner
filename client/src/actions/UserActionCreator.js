@@ -43,10 +43,32 @@ var UserActionCreator = {
 				})
 			})
 	},
+	getUser: function (username, password) {
+		var usersPromise = API.getUser(username, password);
+
+		usersPromise
+			.then(function (id) {
+				if (id == "wrong") {
+					Dispatcher.dispatch({
+						actionType: "wrong",
+					})
+				} else {
+					Dispatcher.dispatch({
+						actionType: "setId",
+						data: {
+							_id: id
+						}
+					})
+				}
+			})
+	},
 	removeError: function () {
 		Dispatcher.dispatch({
 			actionType: "removeError",
 		})
+	},
+	deleteUsers: function () {
+		API.deleteUsers()
 	}
 }
 

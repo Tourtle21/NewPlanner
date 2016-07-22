@@ -25,6 +25,13 @@ var FinancePlan = React.createClass({
 			},
 		}
 	},
+	componentWillUnmount: function () {
+		ItemStore.removeChangeListener(this.onChange);
+	},
+
+	onChange: function () {
+		this.update()
+	},
 	saveTodoState: function (id,type, event) {
 		var field = event.target.name;
 		var value = event.target.value;
@@ -74,14 +81,19 @@ var FinancePlan = React.createClass({
 		this.update()
 	},
 	componentWillMount: function () {
+		ItemStore.addChangeListener(this.onChange);
 		this.setState({
 			incomes: ItemStore.getAllIncomes(),
 			expenses: ItemStore.getAllExpenses()
 		})
-		console.log(ItemStore.getAllIncomes(), ItemStore.getAllExpenses())
 	},
 	componentDidMount: function () {
-		this.update()
+		var item = [this.state.incomes, this.state.expenses]
+		if (UserStore.getifnew()) {
+			console.log("created")
+			ItemActionCreator.createItem(item);
+		}
+		ItemActionCreator.initialize(UserStore.getId());
 	},
 	createNew: function (turn) {
 		var number = 0;
@@ -93,15 +105,8 @@ var FinancePlan = React.createClass({
 	},
 	link: function () {
 		ItemActionCreator.setGoal(document.getElementsByName("goal")[0].value, document.getElementsByTagName("select")[0].value, this.state.totals.netIncome)
-		var item = [this.state.incomes, this.state.expenses]
-	  if (UserStore.getifnew()) {
-			ItemActionCreator.createItem(item);
-			ItemActionCreator.initialize(UserStore.getId());
-		} else {
-			item = ItemStore.getFullItem();
-			console.log(item)
-			ItemActionCreator.updateItem(item);
-		}
+		var item = ItemStore.getFullItem();
+		ItemActionCreator.updateItem(item);
 		UserActionCreator.setifnew(false)
 		browserHistory.push("/projections")
 	},
@@ -114,7 +119,7 @@ var FinancePlan = React.createClass({
 				<div className="imgContainer"><img className="image" src="../images/instructions.png" alt="logo" /></div>
 				<div id="goal">
 					<div id="goal-content">
-					How much would you like to save in: 
+						How much would you like to save in:
 					</div>
 
 					<DropBox />
@@ -125,35 +130,35 @@ var FinancePlan = React.createClass({
 						onChange={this.state.saveTodoState}
 					/>
 				</div>
-			<div className="financeBackground">
-				<div id="income">
-					<FinanceManager
-						name= "incomes"
-						title= "Income"
-						incomes= {this.state.incomes}
-						total= {total}
-						saveTodoState = {this.saveTodoState}
-						createNew = {this.createNew}
-						delete = {this.delete}
-					/>
+				<div className="financeBackground">
+					<div id="income">
+						<FinanceManager
+							name= "incomes"
+							title= "Income"
+							incomes= {this.state.incomes}
+							total= {total}
+							saveTodoState = {this.saveTodoState}
+							createNew = {this.createNew}
+							delete = {this.delete}
+						/>
+					</div>
+					<div id="expense">
+						<FinanceManager
+							name= "expenses"
+							title= "expenses"
+							expenses= {this.state.expenses}
+							total= {difference}
+							saveTodoState = {this.saveTodoState}
+							createNew = {this.createNew}
+							delete = {this.delete}
+						/>
+					</div>
 				</div>
-				<div id="expense">
-					<FinanceManager
-						name= "expenses"
-						title= "expenses"
-						expenses= {this.state.expenses}
-						total= {difference}
-						saveTodoState = {this.saveTodoState}
-						createNew = {this.createNew}
-						delete = {this.delete}
-					/>
-				</div>
-			</div>
 				<div className="clearall"></div>
 				<div id="x007"> Monthly Cash Flo is:</div>
-				<div id="total"> {this.state.totals.netIncome} </div>
+				<div id="total"> {this.state.totals.netIncome.toFixed(2)} </div>
 				<div id="centerbutton">
-				<button id="calculate" onClick={this.link}>Calculate</button>
+					<button id="calculate" onClick={this.link}>Calculate</button>
 				</div>
 			</div>
 		)

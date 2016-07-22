@@ -31,7 +31,7 @@ var Projections = React.createClass({
 				months = "month"
 			}
 			this.setState({
-				alert: "Sorry, according to your life-style you will either need to cut back $" + String((ItemStore.getGoal() - (ItemStore.getNet()* ItemStore.getMonths()))/ItemStore.getMonths()) + " a month or add at most "+ String(Math.ceil(ItemStore.getGoal() / ItemStore.getNet()) - ItemStore.getMonths()) + " " + months +"."
+				alert: "Sorry, according to your life-style you will either need to cut back $" + String(((ItemStore.getGoal() - (ItemStore.getNet()* ItemStore.getMonths()))/ItemStore.getMonths()).toFixed(2)) + " a month or add at most "+ String(Math.ceil(ItemStore.getGoal() / ItemStore.getNet()) - ItemStore.getMonths()) + " " + months +"."
 			})
 		}
 	},

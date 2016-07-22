@@ -1,8 +1,11 @@
 var User = require('./model');
+var bcrypt = require('bcryptjs');
 
 module.exports = {
 	create: createUser,
-	get: getUsers
+	get: getUsers,
+	getUser: getUser,
+	delete: deleteAll,
 };
 
 function createUser(req, res)
@@ -40,5 +43,32 @@ function getUsers(req, res)
 		if (err) return reportError(err, res)
 
 		res.json(collection)
+	})
+}
+function getUser(req, res)
+{
+	User.find(function (err, collection)
+	{
+		if (err) return reportError(err, res)
+		for (var i = 0; i < collection.length; i++) {
+			if (req.params.username == collection[i].email) {
+				if (bcrypt.compareSync(req.params.password, collection[i].passwordHash)) {
+					console.log("same")
+					res.json(collection[i]._id)
+					return
+				}
+			}
+		}
+		res.json("wrong")
+	})
+}
+function deleteAll(req, res)
+{
+	User.find(function (err, collection) {
+		for (var i = 0; i < collection.length; i++) {
+			collection[i].remove(function (req, res) {
+				console.log("deleted")
+			})
+		}
 	})
 }
