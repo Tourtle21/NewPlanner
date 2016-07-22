@@ -8,7 +8,7 @@ var DropBox = React.createClass({
 	render: function () {
 		return (
 			<div id="DropBox">
-				<select>
+				<select onChange={this.props.onChange}  value={this.props.value}>
 					<option value="1">1 Month</option>
 					<option value="2">2 Months</option>
 					<option value="3">3 Months</option>

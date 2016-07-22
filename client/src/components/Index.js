@@ -19,7 +19,6 @@ var Index = React.createClass({
 		var field = event.target.name;
 		var value = event.target.value;
 		var newText = Object.assign({}, this.state.text);
-
 		newText[field] = value;
 
 		this.setState({
@@ -82,7 +81,7 @@ var Index = React.createClass({
 					<TextInput
 						className="signInInput"
 						name="email"
-						placeholder="EMAIL"
+						placeholder="Email"
 						value={this.state.text.email}
 						onChange={this.saveTodoState}
 						error={this.state.errors.email}

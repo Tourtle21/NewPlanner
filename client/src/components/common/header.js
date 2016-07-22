@@ -10,7 +10,7 @@ var Header = React.createClass({
 				<div className="wrapper">
 					<Link to="/"><img id="headerImage" src="../images/moneylogo.png" alt="logo" /></Link>
 					<ul className="nav">
-						<li><Link to="/">Home</Link></li>
+						<li><Link to="/">Log Out</Link></li>
 						<li><Link to="/financeplan">Financial Plan</Link></li>
 						<li><Link to="/projections">Projections</Link></li>
 					</ul>

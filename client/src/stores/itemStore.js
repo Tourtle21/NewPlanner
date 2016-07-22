@@ -5,7 +5,7 @@ var EventEmitter = require('events');
 var _ = require('lodash');
 var goal = {
 	goal: 0,
-	months: 2,
+	months: 1,
 	net: 0
 }
 var CHANGE_EVENT = 'change';
@@ -39,7 +39,11 @@ var _items = [
 				id: 2,
 				type: "Groceries",
 				amount: 200
-			}]
+			}],
+			{
+				goal: 0,
+				months: 0
+			}
 ]
 var item;
 var ItemStore = Object.assign({}, EventEmitter.prototype, {
@@ -73,8 +77,14 @@ var ItemStore = Object.assign({}, EventEmitter.prototype, {
 	getNet: function () {
 		return goal.net;
 	},
-	getFullItem: function () {
+	getFullItem: function (goal, months) {
 		return item;
+	},
+	getAmount: function () {
+		return JSON.parse(item.data)[2].goal
+	},
+	getMonth: function () {
+		return JSON.parse(item.data)[2].months
 	}
 })
 
@@ -112,6 +122,11 @@ Dispatcher.register(function (action, type) {
 		goal.goal = action.goal
 		goal.months = action.months
 		goal.net = action.net
+		console.log(JSON.parse(item.data)[2].goal)
+		_items[2].goal = goal.goal
+		_items[2].months = goal.months
+		item.data = JSON.stringify(_items)
+		console.log(item)
 		break;
 		case "delete":
 		_items[action.number].splice([action.id], 1)

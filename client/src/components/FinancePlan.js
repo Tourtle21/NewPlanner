@@ -23,6 +23,8 @@ var FinancePlan = React.createClass({
 				diff: 0,
 				netIncome: 0,
 			},
+			text: "5000",
+			months: "",
 		}
 	},
 	componentWillUnmount: function () {
@@ -30,18 +32,31 @@ var FinancePlan = React.createClass({
 	},
 
 	onChange: function () {
+		this.setState({
+			text: ItemStore.getAmount(),
+			months: ItemStore.getMonth()
+		})
 		this.update()
 	},
 	saveTodoState: function (id,type, event) {
 		var field = event.target.name;
 		var value = event.target.value;
 		var type = type;
-		if (type == "amount") {
-			if (isNaN(value)) {
-				return
-			}
+		console.log(value)
+		if (type == "drop") {
+			this.setState({
+				months: value
+			})
 		}
-		if (field == "incomes") {
+		else if (field == "goal") {
+			var newText = this.state.text;
+			newText = value;
+			
+			this.setState({
+				text: newText
+			})
+		}
+		else if (field == "incomes") {
 			var newText = this.state.incomes;
 			newText[id][type] = value;
 			ItemActionCreator.updateItem(newText[id], "income")
@@ -58,6 +73,7 @@ var FinancePlan = React.createClass({
 
 	},
 	update: function () {
+		console.log(ItemStore.getAllExpenses())
 		this.setState({
 			incomes: ItemStore.getAllIncomes(),
 			expenses: ItemStore.getAllExpenses(),
@@ -84,10 +100,12 @@ var FinancePlan = React.createClass({
 	},
 	componentWillMount: function () {
 		ItemStore.addChangeListener(this.onChange);
-		var item = [ItemStore.getAllIncomes(), ItemStore.getAllExpenses()]
+		var item = [ItemStore.getAllIncomes(), ItemStore.getAllExpenses(), {goal: ItemStore.getGoal(), months: ItemStore.getMonths()}]
+		console.log(item)
 		if (UserStore.getifnew()) {
 			ItemActionCreator.createItem(item);
 		}
+
 	},
 	componentDidMount: function () {
 		ItemActionCreator.initialize(UserStore.getId());
@@ -120,12 +138,15 @@ var FinancePlan = React.createClass({
 						How much would you like to save in:
 					</div>
 
-					<DropBox />
+					<DropBox
+						value={this.state.months}
+						name="drop"
+						onChange={this.saveTodoState.bind(this, "drop", "drop")}
+					/>
 					<TextInput
 						name="goal"
-						placeholder='goal amount'
 						value={this.state.text}
-						onChange={this.state.saveTodoState}
+						onChange={this.saveTodoState.bind(this, 2, 3)}
 					/>
 				</div>
 				<div className="financeBackground">
